@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -22,9 +22,9 @@ const Wrapper = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header navigationItems={navigationItems} />
-      <Container maxWidth="lg" sx={{ minHeight: "70vh", marginTop: "4rem" }}>
+      <Box sx={{ minHeight: "70vh", marginTop: "3.45rem" }}>
         <Outlet />
-      </Container>
+      </Box>
       <Footer />
     </ThemeProvider>
   );

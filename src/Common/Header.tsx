@@ -1,6 +1,13 @@
-import { AppBar, Box, Button, Stack, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { MenuRounded } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 interface Props {
   navigationItems: prop[];
@@ -11,19 +18,6 @@ interface prop {
 }
 
 const Header = ({ navigationItems }: Props) => {
-  const location = useLocation();
-  const [url, setUrl] = useState<string>(location.pathname);
-
-  const handleActiveLink = (link: string) => {
-    if (url == link) {
-      return "green";
-    } else return "black";
-  };
-
-  useEffect(() => {
-    setUrl(location.pathname);
-  }, [location.pathname]);
-
   return (
     <Box
       sx={{
@@ -33,21 +27,36 @@ const Header = ({ navigationItems }: Props) => {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: "white",
+          backgroundColor: "#FFF8DC",
           padding: "15px",
-          backdropFilter: "blur(10px)",
+          maxHeight: "55px",
         }}
       >
-        <Stack direction={"row"} spacing={10} justifyContent={"center"}>
-          <Typography color={"red"}>Logo</Typography>
+        <Stack
+          direction={"row"}
+          spacing={10}
+          justifyContent={{
+            md: "center",
+            sm: "space-between",
+            xs: "space-between",
+          }}
+          alignItems={"center"}
+        >
+          <Typography color={"red"} sx={{ display: "inline" }}>
+            Logo
+          </Typography>
           {navigationItems.map((item) => (
             <Button
               key={item.link}
               disableRipple={true}
               size="medium"
               sx={{
-                color: handleActiveLink(item.link),
-                "&:hover": { backgroundColor: "transparent" },
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  translate: "1px -1px",
+                },
+                display: { md: "block", sm: "none", xs: "none" },
                 padding: "0px",
               }}
               component={Link}
@@ -56,6 +65,19 @@ const Header = ({ navigationItems }: Props) => {
               {item.title}
             </Button>
           ))}
+          <IconButton
+            disableRipple={true}
+            sx={{
+              color: "black",
+              display: { md: "none", sm: "inline", xs: "inline" },
+              padding: "0px",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+            }}
+          >
+            <MenuRounded />
+          </IconButton>
         </Stack>
       </AppBar>
     </Box>
