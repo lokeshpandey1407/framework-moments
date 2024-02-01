@@ -10,7 +10,7 @@ export type CardData = {
 const RecentPosts = () => {
   return (
     <Box
-      width={"100%"}
+      width={""}
       sx={{
         minHeight: "300px",
       }}

@@ -16,7 +16,7 @@ const Footer = () => {
           display: "flex",
           flexDirection: "column",
           padding: "15px",
-          gap: 2,
+          gap: 2
         }}
         component="footer"
       >

@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Stack, Typography } from "@mui/material";
+import { AppBar, Box, Button, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -13,9 +13,10 @@ interface prop {
 const Header = ({ navigationItems }: Props) => {
   const location = useLocation();
   const [url, setUrl] = useState<string>(location.pathname);
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const handleActiveLink = (link: string) => {
-    if (url == link) {
+    if (url === link) {
       return "green";
     } else return "black";
   };
@@ -25,40 +26,43 @@ const Header = ({ navigationItems }: Props) => {
   }, [location.pathname]);
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-      }}
-    >
-      <AppBar
-        position="fixed"
+    !isSmallScreen && (
+      <Box
         sx={{
-          backgroundColor: "white",
-          padding: "15px",
-          backdropFilter: "blur(10px)",
+          flexGrow: 1,
         }}
       >
-        <Stack direction={"row"} spacing={10} justifyContent={"center"}>
-          <Typography color={"red"}>Logo</Typography>
-          {navigationItems.map((item) => (
-            <Button
-              key={item.link}
-              disableRipple={true}
-              size="medium"
-              sx={{
-                color: handleActiveLink(item.link),
-                "&:hover": { backgroundColor: "transparent" },
-                padding: "0px",
-              }}
-              component={Link}
-              to={item.link}
-            >
-              {item.title}
-            </Button>
-          ))}
-        </Stack>
-      </AppBar>
-    </Box>
+        <AppBar
+          position="fixed"
+          sx={{
+            backgroundColor: "white",
+            padding: "15px",
+            backdropFilter: "blur(10px)",
+          }}
+          style={{ zIndex: "4", background: "space" }}
+        >
+          <Stack direction={"row"} spacing={10} justifyContent={"center"}>
+            <Typography color={"red"}>Logo</Typography>
+            {navigationItems.map((item) => (
+              <Button
+                key={item.link}
+                disableRipple={true}
+                size="medium"
+                sx={{
+                  color: handleActiveLink(item.link),
+                  "&:hover": { backgroundColor: "transparent" },
+                  padding: "0px",
+                }}
+                component={Link}
+                to={item.link}
+              >
+                {item.title}
+              </Button>
+            ))}
+          </Stack>
+        </AppBar>
+      </Box>
+    )
   );
 };
 

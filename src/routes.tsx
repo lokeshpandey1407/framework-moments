@@ -1,7 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Wrapper from "./Common/Wrapper";
 import Home from "./Components/Home/Home";
-
+import Contact from "./Components/Wrapper/Contact";
+import About from "./Components/Wrapper/About";
+import SinglePhotoPage from "./Components/Wrapper/SinglePhotoPage";
+import Haldi from "./Components/Wrapper/Haldi";
+import PreWedding from "./Components/Wrapper/PreWedding";
+import MultiplePhotosFrame from "./Components/Wrapper/MultiplePhotosFrame";
 export const router = createBrowserRouter([
   {
     element: <Wrapper />,
@@ -13,20 +18,32 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wedding",
-        element: <div>Wedding</div>,
+        element:<SinglePhotoPage />,
       },
       {
         path: "/pre_wedding",
-        element: <div>Pre Wedding</div>,
+        element: <PreWedding />,
       },
       {
         path: "/about_us",
-        element: <div>About Us</div>,
+        element: <About />,
       },
       {
         path: "/contact",
-        element: <div>Contact</div>,
+        element: <Contact />,
       },
+      {
+        path:"/haldi",
+        element:<Haldi />,
+      },
+      {
+        path:"/preWeddingPage",
+        element:<PreWedding />,
+      },
+      {
+        path:"/allPhotosPage",
+        element:<MultiplePhotosFrame />
+      }
     ],
   },
 ]);
