@@ -1,6 +1,18 @@
-import { AppBar, Box, Button, Stack, Typography, useMediaQuery } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Stack,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { MenuRounded } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { AcUnit } from "@mui/icons-material";
+import { useState } from "react";
 
 interface Props {
   navigationItems: prop[];
@@ -11,58 +23,97 @@ interface prop {
 }
 
 const Header = ({ navigationItems }: Props) => {
-  const location = useLocation();
-  const [url, setUrl] = useState<string>(location.pathname);
-  const isSmallScreen = useMediaQuery("(max-width:600px)");
-
-  const handleActiveLink = (link: string) => {
-    if (url === link) {
-      return "green";
-    } else return "black";
-  };
-
-  useEffect(() => {
-    setUrl(location.pathname);
-  }, [location.pathname]);
-
+  const [drawer, setDrawer] = useState(false);
+  const theme = useTheme();
+  function openDrawer() {
+    setDrawer(true);
+  }
+  function closeDrawer() {
+    setDrawer(false);
+  }
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    !isSmallScreen && (
-      <Box
-        sx={{
-          flexGrow: 1,
-        }}
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position="fixed"
+        sx={{ backgroundColor: "#FFF8DC", minHeight: "65px" }}
       >
-        <AppBar
-          position="fixed"
-          sx={{
-            backgroundColor: "white",
-            padding: "15px",
-            backdropFilter: "blur(10px)",
-          }}
-          style={{ zIndex: "4", background: "space" }}
-        >
-          <Stack direction={"row"} spacing={10} justifyContent={"center"}>
-            <Typography color={"red"}>Logo</Typography>
-            {navigationItems.map((item) => (
-              <Button
-                key={item.link}
+        <Toolbar>
+          <AcUnit sx={{ mr: 3 }} color="action" fontSize="medium" />
+          {!isMatch ? (
+            <Stack
+              direction={"row"}
+              spacing={2}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              {navigationItems.map((item) => (
+                <Button
+                  key={item.link}
+                  disableRipple={true}
+                  sx={{
+                    color: "black",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                  component={Link}
+                  to={item.link}
+                >
+                  {item.title}
+                </Button>
+              ))}
+            </Stack>
+          ) : (
+            <>
+              <IconButton
                 disableRipple={true}
-                size="medium"
                 sx={{
-                  color: handleActiveLink(item.link),
-                  "&:hover": { backgroundColor: "transparent" },
+                  color: "black",
+                  marginLeft: "auto",
+                  zIndex: 10,
                   padding: "0px",
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                  },
                 }}
-                component={Link}
-                to={item.link}
+                onClick={openDrawer}
               >
-                {item.title}
-              </Button>
-            ))}
-          </Stack>
-        </AppBar>
-      </Box>
-    )
+                <MenuRounded />
+              </IconButton>
+              <Drawer anchor="right" open={drawer} onClose={closeDrawer}>
+                <Stack
+                  direction={"column"}
+                  width={"50vw"}
+                  justifyContent={"center"}
+                  alignItems={"flex-start"}
+                >
+                  {navigationItems.map((item) => (
+                    <Button
+                      key={item.link}
+                      fullWidth
+                      disableRipple={true}
+                      sx={{
+                        color: "black",
+                        padding: "10px",
+                        ":hover": {
+                          backgroundColor: "#FFF8DC",
+                        },
+                      }}
+                      component={Link}
+                      onClick={closeDrawer}
+                      to={item.link}
+                    >
+                      {item.title}
+                    </Button>
+                  ))}
+                </Stack>
+              </Drawer>
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 

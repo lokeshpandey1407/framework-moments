@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Button } from '@mui/material';
-import MultiplePhotosFrame from './MultiplePhotosFrame';
+import { useState } from "react";
+import { Button } from "@mui/material";
+import MultiplePhotosFrame from "./MultiplePhotosFrame";
 import Frame from "./frameup.jpg";
 
 const HaldiPhoto = () => {
@@ -16,9 +16,14 @@ const HaldiPhoto = () => {
 
   return (
     <div>
-      <Button onClick={handleClick} style={{backgroundColor:"white", marginTop:"5px"}}>
-        {showAllPhotos ? 'Wedding Photos' : ''}
-        {!showAllPhotos && <img src={Frame} style={{ width: "380px", height: "200px" }} />}
+      <Button
+        onClick={handleClick}
+        style={{ backgroundColor: "white", marginTop: "5px" }}
+      >
+        {showAllPhotos ? "Wedding Photos" : ""}
+        {!showAllPhotos && (
+          <img src={Frame} style={{ width: "380px", height: "200px" }} />
+        )}
       </Button>
       {showAllPhotos && <MultiplePhotosFrame />}
       {openPhoto && (
