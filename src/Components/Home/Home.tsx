@@ -6,38 +6,10 @@ import MultiplePhotosFrame from "../Wrapper/MultiplePhotosFrame";
 import { useNavigate } from "react-router-dom";
 import { CardArray, URLS } from "../../assets/HomePageObj";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   image: {
     width: "100%",
     objectFit: "cover",
-  },
-  header: {
-    marginBottom: theme.spacing(2),
-    color: "#333",
-  },
-  button: {
-    backgroundColor: "#4caf50",
-    color: "#fff",
-    "&:hover": {
-      backgroundColor: "#388e3c",
-    },
-  },
-  contentContainer: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: theme.spacing(4),
-    flexWrap: "wrap",
-  },
-  fadeIn: {
-    animation: `$fadeIn 1s ${theme.transitions.easing.easeInOut}`,
-  },
-  "@keyframes fadeIn": {
-    "0%": {
-      opacity: 0,
-    },
-    "100%": {
-      opacity: 1,
-    },
   },
 }));
 
@@ -122,14 +94,6 @@ const Home = () => {
             );
           })}
         </Grid>
-        <div
-          className={classes.contentContainer}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "100px",
-          }}
-        ></div>
         <Typography
           variant="body1"
           sx={{

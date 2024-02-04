@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Box, Grid, Paper, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Cards } from "../../assets/weddingCards";
 import Frame from "./frameup.jpg";
 
@@ -9,18 +9,18 @@ const SinglePhotoPage = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleButtonClick = (section) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    if (section === "all") {
-      navigate("/allPhotosPage");
-    } else if (section === "photos") {
-      navigate("/haldi");
-    } else if (section === "pre") {
-      navigate("/preWeddingPage");
-    }
-  };
+  // const handleButtonClick = (section) => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  //   if (section === "all") {
+  //     navigate("/allPhotosPage");
+  //   } else if (section === "photos") {
+  //     navigate("/haldi");
+  //   } else if (section === "pre") {
+  //     navigate("/preWeddingPage");
+  //   }
+  // };
 
   return (
     <Box>

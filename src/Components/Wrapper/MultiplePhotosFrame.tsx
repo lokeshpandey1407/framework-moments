@@ -6,7 +6,6 @@ import {
   useMediaQuery,
   Container,
 } from "@mui/material";
-import Photos from "./Photos";
 import Gallery from "../Sections/ImageGallery";
 
 const MultiplePhotosFrame = ({ Images }) => {
