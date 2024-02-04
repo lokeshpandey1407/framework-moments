@@ -1,81 +1,31 @@
-import { useState } from "react";
-import {
-  ImageList,
-  ImageListItem,
-  Modal,
-  Button,
-  Backdrop,
-} from "@mui/material";
-import Picture from "./Picture";
+import { Box, Typography } from "@mui/material";
+import MultiplePhotosFrame from "./MultiplePhotosFrame";
+import Photos from "./Photos";
 
 const Haldi = () => {
-  const [openPhotoIndex, setOpenPhotoIndex] = useState<number | null>(null);
-
-  const handlePhotoClick = (photoIndex: number) => {
-    setOpenPhotoIndex(photoIndex);
-  };
-
-  const handleCloseModal = () => {
-    setOpenPhotoIndex(null);
-  };
-
-  const handleNextPhoto = () => {
-    if (openPhotoIndex !== null && openPhotoIndex < Picture.length - 1) {
-      setOpenPhotoIndex(openPhotoIndex + 1);
-    }
-  };
-
-  const handlePrevPhoto = () => {
-    if (openPhotoIndex !== null && openPhotoIndex > 0) {
-      setOpenPhotoIndex(openPhotoIndex - 1);
-    }
-  };
-
   return (
-    <div>
-      <ImageList sx={{ width: "100%" }} cols={6}>
-        {Picture.map((photo, index) => (
-          <ImageListItem
-            key={photo.img}
-            onClick={() => handlePhotoClick(index)}
-          >
-            <img
-              srcSet={`${photo.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              src={`${photo.img}?w=164&h=164&fit=crop&auto=format`}
-              alt={photo.title}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-
-      <Modal
-        open={openPhotoIndex !== null}
-        onClose={handleCloseModal}
-        BackdropComponent={Backdrop}
+    <Box sx={{ marginTop: "7rem" }}>
+      <Typography
+        textAlign={"center"}
+        fontWeight={"bold"}
+        sx={{
+          width: "fit-content",
+          margin: "auto",
+          ":after": {
+            content: `""`,
+            height: "3px",
+            textAlign: "center",
+            width: "120%",
+            display: "block",
+            backgroundColor: "gold",
+            borderRadius: "5px",
+          },
+        }}
       >
-        <div>
-          {openPhotoIndex !== null && (
-            <div>
-              <img
-                src={Picture[openPhotoIndex].img}
-                alt={Picture[openPhotoIndex].title}
-                style={{
-                  width: "100%",
-                  maxHeight: "80vh",
-                  objectFit: "contain",
-                  marginTop: "60px",
-                }}
-              />
-              <div style={{ textAlign: "center", backgroundColor: "white" }}>
-                <Button onClick={handlePrevPhoto}>Previous</Button>
-                <Button onClick={handleNextPhoto}>Next</Button>
-              </div>
-            </div>
-          )}
-        </div>
-      </Modal>
-    </div>
+        Haldi Photos
+      </Typography>
+      <MultiplePhotosFrame Images={Photos} />
+    </Box>
   );
 };
 

@@ -6,7 +6,6 @@ import About from "./Components/Wrapper/About";
 import SinglePhotoPage from "./Components/Wrapper/SinglePhotoPage";
 import Haldi from "./Components/Wrapper/Haldi";
 import PreWedding from "./Components/Wrapper/PreWedding";
-import MultiplePhotosFrame from "./Components/Wrapper/MultiplePhotosFrame";
 export const router = createBrowserRouter([
   {
     element: <Wrapper />,
@@ -18,7 +17,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wedding",
-        element:<SinglePhotoPage />,
+        element: <SinglePhotoPage />,
       },
       {
         path: "/pre_wedding",
@@ -33,17 +32,9 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/haldi",
-        element:<Haldi />,
+        path: "/haldi",
+        element: <Haldi />,
       },
-      {
-        path:"/preWeddingPage",
-        element:<PreWedding />,
-      },
-      {
-        path:"/allPhotosPage",
-        element:<MultiplePhotosFrame />
-      }
     ],
   },
 ]);

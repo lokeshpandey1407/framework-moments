@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Typography, Container, Box, Paper, Grid } from "@mui/material";
 import ImageCarousel from "../Sections/ImageCarousel";
 import { makeStyles } from "@mui/styles";
-import Haldi from "../Wrapper/Haldi";
-import PreWedding from "../Wrapper/PreWedding";
+import Photos from "../Wrapper/Photos";
 import MultiplePhotosFrame from "../Wrapper/MultiplePhotosFrame";
 import { useNavigate } from "react-router-dom";
 import { CardArray, URLS } from "../../assets/HomePageObj";
@@ -44,23 +42,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
-  const [showAllPhotos, setShowAllPhotos] = useState(false);
-  const [showPhotos, setShowPhotos] = useState(false);
-  const [showPre, setShowPre] = useState(false);
-
   const navigate = useNavigate();
-
-  const handleButtonClick = (section) => {
-    setShowAllPhotos(section === "all" ? !showAllPhotos : false);
-    setShowPhotos(section === "photos" ? !showPhotos : false);
-    setShowPre(section === "pre" ? !showPre : false);
-
-    if (section === "all") {
-      navigate("/allPhotosPage");
-    } else if (section === "photos") {
+  const handleButtonClick = (section: string) => {
+    if (section === "wedding") {
+      navigate("/wedding");
+    } else if (section === "haldi") {
       navigate("/haldi");
-    } else if (section === "pre") {
-      navigate("/preWeddingPage");
+    } else if (section === "pre_wedding") {
+      navigate("/pre_wedding");
     }
   };
 
@@ -86,7 +75,12 @@ const Home = () => {
             labore et dolore magna aliqua.
           </Typography>
         </Box>
-        <Grid container marginTop={"2rem"} columnSpacing={4}>
+        <Grid
+          container
+          marginTop={"2rem"}
+          columnSpacing={4}
+          justifyContent={"center"}
+        >
           {CardArray.map((card, index) => {
             return (
               <Grid item xs={12} sm={8} md={4} key={index + card.title}>
@@ -135,11 +129,7 @@ const Home = () => {
             justifyContent: "center",
             marginTop: "100px",
           }}
-        >
-          {showAllPhotos && <MultiplePhotosFrame />}
-          {showPhotos && <Haldi />}
-          {showPre && <PreWedding />}
-        </div>
+        ></div>
         <Typography
           variant="body1"
           sx={{
@@ -151,7 +141,7 @@ const Home = () => {
           Our Latest Work
         </Typography>
         <div>
-          <MultiplePhotosFrame />
+          <MultiplePhotosFrame Images={Photos} />
         </div>
         <Grid container xl={12} spacing={3} sx={{ marginTop: "3rem" }}>
           <Grid item xl={4} md={4} sx={{ order: { xs: 2, md: 1 } }}>

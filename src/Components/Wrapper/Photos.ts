@@ -1,62 +1,110 @@
 const Photos = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
+    img: "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Breakfast",
   },
   {
     id: 2,
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
+    img: "https://images.pexels.com/photos/234272/pexels-photo-234272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/234272/pexels-photo-234272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/234272/pexels-photo-234272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Burger",
   },
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
+    img: "https://images.pexels.com/photos/5759215/pexels-photo-5759215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/5759215/pexels-photo-5759215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/5759215/pexels-photo-5759215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Camera",
   },
   {
     id: 4,
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
+    img: "https://images.pexels.com/photos/12665354/pexels-photo-12665354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/12665354/pexels-photo-12665354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/12665354/pexels-photo-12665354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Coffee",
   },
   {
     id: 5,
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
+    img: "https://images.pexels.com/photos/11762791/pexels-photo-11762791.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/11762791/pexels-photo-11762791.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/11762791/pexels-photo-11762791.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Hats",
   },
   {
     id: 6,
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
+    img: "https://images.pexels.com/photos/11062930/pexels-photo-11062930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/11062930/pexels-photo-11062930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/11062930/pexels-photo-11062930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Honey",
   },
   {
     id: 7,
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
+    img: "https://images.pexels.com/photos/12200847/pexels-photo-12200847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/12200847/pexels-photo-12200847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/12200847/pexels-photo-12200847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Basketball",
   },
   {
     id: 8,
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
+    img: "https://images.pexels.com/photos/5467615/pexels-photo-5467615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/5467615/pexels-photo-5467615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/5467615/pexels-photo-5467615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Fern",
   },
   {
     id: 9,
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
+    img: "https://images.pexels.com/photos/11810851/pexels-photo-11810851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/11810851/pexels-photo-11810851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/11810851/pexels-photo-11810851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Mushrooms",
   },
   {
     id: 10,
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
+    img: "https://images.pexels.com/photos/9392460/pexels-photo-9392460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/9392460/pexels-photo-9392460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/9392460/pexels-photo-9392460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Tomato basil",
   },
   {
     id: 11,
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
+    img: "https://images.pexels.com/photos/7669984/pexels-photo-7669984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/7669984/pexels-photo-7669984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/7669984/pexels-photo-7669984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Sea star",
   },
   {
     id: 12,
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
+    img: "https://images.pexels.com/photos/7184081/pexels-photo-7184081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    original:
+      "https://images.pexels.com/photos/7184081/pexels-photo-7184081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    thumbnail:
+      "https://images.pexels.com/photos/7184081/pexels-photo-7184081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Bike",
   },
 ];

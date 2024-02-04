@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   ImageList,
   ImageListItem,
   Modal,
-  Button,
-  Backdrop,
   useMediaQuery,
+  Container,
 } from "@mui/material";
 import Photos from "./Photos";
+import Gallery from "../Sections/ImageGallery";
 
-const MultiplePhotosFrame = () => {
+const MultiplePhotosFrame = ({ Images }) => {
   const [openPhotoIndex, setOpenPhotoIndex] = useState<number | null>(null);
+  const [index, setIndex] = useState<number>(0);
   const isExtraSmallScreen = useMediaQuery("(max-width:400px)");
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   const isMediumScreen = useMediaQuery("(max-width:960px)");
@@ -24,6 +25,8 @@ const MultiplePhotosFrame = () => {
     : 5;
 
   const handlePhotoClick = (photoIndex: number) => {
+    setIndex(photoIndex);
+
     setOpenPhotoIndex(photoIndex);
   };
 
@@ -31,25 +34,14 @@ const MultiplePhotosFrame = () => {
     setOpenPhotoIndex(null);
   };
 
-  const handleNextPhoto = () => {
-    if (openPhotoIndex !== null && openPhotoIndex < Photos.length - 1) {
-      setOpenPhotoIndex(openPhotoIndex + 1);
-    }
-  };
-
-  const handlePrevPhoto = () => {
-    if (openPhotoIndex !== null && openPhotoIndex > 0) {
-      setOpenPhotoIndex(openPhotoIndex - 1);
-    }
-  };
-
   return (
-    <div>
-      <ImageList sx={{ width: "100%" }} cols={cols}>
-        {Photos.map((photo, index) => (
+    <Container maxWidth="lg">
+      <ImageList sx={{ width: "100%" }} cols={cols} gap={10} variant="quilted">
+        {Images.map((photo, index) => (
           <ImageListItem
             key={photo.img}
             onClick={() => handlePhotoClick(index)}
+            sx={{ cursor: "pointer" }}
           >
             <img
               srcSet={`${photo.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
@@ -61,33 +53,10 @@ const MultiplePhotosFrame = () => {
         ))}
       </ImageList>
 
-      <Modal
-        open={openPhotoIndex !== null}
-        onClose={handleCloseModal}
-        BackdropComponent={Backdrop}
-      >
-        <div>
-          {openPhotoIndex !== null && (
-            <div>
-              <img
-                src={Photos[openPhotoIndex].img}
-                alt={Photos[openPhotoIndex].title}
-                style={{
-                  width: "100%",
-                  maxHeight: "80vh",
-                  objectFit: "contain",
-                  marginTop: "60px",
-                }}
-              />
-              <div style={{ textAlign: "center", backgroundColor: "white" }}>
-                <Button onClick={handlePrevPhoto}>Previous</Button>
-                <Button onClick={handleNextPhoto}>Next</Button>
-              </div>
-            </div>
-          )}
-        </div>
+      <Modal open={openPhotoIndex !== null} onClose={handleCloseModal}>
+        <Gallery startIndex={index} images={Images} />
       </Modal>
-    </div>
+    </Container>
   );
 };
 
