@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
-import { Cards } from "../../assets/weddingCards";
-import Frame from "./frameup.jpg";
+import { Cards } from "../../Common/JSON/weddingCards";
+import Frame from "../../assets/frameup.jpg";
 
-const SinglePhotoPage = () => {
+const WeddingPage = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -79,4 +79,4 @@ const SinglePhotoPage = () => {
   );
 };
 
-export default SinglePhotoPage;
+export default WeddingPage;

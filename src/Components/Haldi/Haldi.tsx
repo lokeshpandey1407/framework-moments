@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import MultiplePhotosFrame from "./MultiplePhotosFrame";
-import Photos from "./Photos";
+import MultiplePhotosFrame from "../../Common/MultiplePhotosFrame";
+import Photos from "../../Common/JSON/Photos";
 
 const Haldi = () => {
   return (

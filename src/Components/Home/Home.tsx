@@ -1,10 +1,10 @@
 import { Typography, Container, Box, Paper, Grid } from "@mui/material";
 import ImageCarousel from "../Sections/ImageCarousel";
 import { makeStyles } from "@mui/styles";
-import Photos from "../Wrapper/Photos";
-import MultiplePhotosFrame from "../Wrapper/MultiplePhotosFrame";
+import Photos from "../../Common/JSON/Photos";
+import MultiplePhotosFrame from "../../Common/MultiplePhotosFrame";
 import { useNavigate } from "react-router-dom";
-import { CardArray, URLS } from "../../assets/HomePageObj";
+import { CardArray, URLS } from "../../Common/JSON/HomePageObj";
 
 const useStyles = makeStyles(() => ({
   image: {

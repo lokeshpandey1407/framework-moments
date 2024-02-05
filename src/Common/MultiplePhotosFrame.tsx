@@ -6,10 +6,11 @@ import {
   useMediaQuery,
   Container,
 } from "@mui/material";
-import Gallery from "../Sections/ImageGallery";
+import Gallery from "../Components/Sections/ImageGallery";
+import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 
 const MultiplePhotosFrame = ({ Images }) => {
-  const [openPhotoIndex, setOpenPhotoIndex] = useState<number | null>(null);
+  const [openPhotoModal, setOpenPhotoModal] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const isExtraSmallScreen = useMediaQuery("(max-width:400px)");
   const isSmallScreen = useMediaQuery("(max-width:600px)");
@@ -25,12 +26,11 @@ const MultiplePhotosFrame = ({ Images }) => {
 
   const handlePhotoClick = (photoIndex: number) => {
     setIndex(photoIndex);
-
-    setOpenPhotoIndex(photoIndex);
+    setOpenPhotoModal(true);
   };
 
   const handleCloseModal = () => {
-    setOpenPhotoIndex(null);
+    setOpenPhotoModal(false);
   };
 
   return (
@@ -40,7 +40,14 @@ const MultiplePhotosFrame = ({ Images }) => {
           <ImageListItem
             key={photo.img}
             onClick={() => handlePhotoClick(index)}
-            sx={{ cursor: "pointer" }}
+            sx={{
+              cursor: "pointer",
+              position: "relatve",
+
+              ":hover .fullscreen-icon": {
+                opacity: 1,
+              },
+            }}
           >
             <img
               srcSet={`${photo.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
@@ -48,11 +55,27 @@ const MultiplePhotosFrame = ({ Images }) => {
               alt={photo.title}
               loading="lazy"
             />
+            <ViewCarouselIcon
+              fontSize="large"
+              className="fullscreen-icon"
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                color: "rgba(248,248,255,0.6)",
+                transform: "translate(-50%, -50%)",
+                height: "100%",
+                width: "100%",
+                opacity: 0,
+                transition: "opacity 0.5s ease",
+                backgroundColor: "rgba(28,28,25,0.5)",
+              }}
+            />
           </ImageListItem>
         ))}
       </ImageList>
 
-      <Modal open={openPhotoIndex !== null} onClose={handleCloseModal}>
+      <Modal open={openPhotoModal} onClose={handleCloseModal}>
         <Gallery startIndex={index} images={Images} />
       </Modal>
     </Container>
