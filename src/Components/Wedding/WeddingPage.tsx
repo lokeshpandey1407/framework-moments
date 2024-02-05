@@ -3,6 +3,8 @@ import { Box, Grid, Paper, Typography } from "@mui/material";
 // import { useNavigate } from "react-router-dom";
 import { Cards } from "../../Common/JSON/weddingCards";
 import Frame from "../../assets/frameup.jpg";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import CropDinOutlinedIcon from "@mui/icons-material/CropDinOutlined";
 
 const WeddingPage = () => {
   useEffect(() => {
@@ -59,13 +61,45 @@ const WeddingPage = () => {
       >
         {Cards.map((card) => {
           return (
-            <Grid item xs={12} sm={5} md={3} key={card.title}>
-              <Paper elevation={0}>
+            <Grid item xs={12} sm={4} md={3} key={card.title} sx={{}}>
+              <Paper
+                elevation={0}
+                sx={{
+                  margin: "0px 30px",
+                  position: "relative",
+                  ":hover .fullscreen-icon": {
+                    opacity: 1,
+                  },
+                  overflow: "hidden",
+                  cursor: "pointer",
+                }}
+              >
                 <img
                   src={card.imgUrl}
                   alt="Alt text"
-                  style={{ width: "100%", objectFit: "cover" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+
+                    objectFit: "cover",
+                  }}
                   // onClick={() => handleButtonClick("all")}
+                />
+                <CollectionsIcon
+                  className="fullscreen-icon"
+                  sx={{
+                    position: "absolute",
+                    fontSize: "20px",
+                    top: "50%",
+                    left: "50%",
+                    color: "rgba(280,280,250,01)",
+                    transform: "translate(-50%, -50%)",
+                    height: "50%",
+                    width: "50%",
+                    overflow: "hidden",
+                    opacity: 0,
+                    transition: "opacity 0.5s ease",
+                  }}
                 />
               </Paper>
               <Typography variant="subtitle1" textAlign={"center"}>
